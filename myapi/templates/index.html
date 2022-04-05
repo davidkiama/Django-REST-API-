@@ -8,6 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
@@ -18,15 +20,26 @@
 <body>
     <h1>Home</h1>
 
-    <form>
-        {% csrf_token %}
+    <div>
 
+        <form class="get-data">
+            {% csrf_token %}
+            <input type="submit" value="Get data">
+        </form>
+        <div class="list">
+            <!-- Get data from JS -->
+        </div>
 
-        <input type="submit" value="Get data">
-    </form>
-    <div class="list">
+    </div>
 
+    <div>
 
+        <form class="post-data">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Name">
+            <input type="text" name="alias" placeholder="Alias">
+            <input type="submit" value="Add hero">
+        </form>
     </div>
 
 
