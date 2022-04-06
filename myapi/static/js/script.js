@@ -48,6 +48,7 @@ const formPostData = document.querySelector(".post-data");
 
 formGetData.addEventListener("submit", function (e) {
   e.preventDefault();
+  list.replaceChildren();
 
   fetch("/")
     .then((res) => res.json())
@@ -75,10 +76,16 @@ formPostData.addEventListener("submit", function (e) {
     // Adding headers to the request
     headers: {
       "Content-type": "application/json; charset=UTF-8",
+      "X-CSRFToken": formPostData.csrfmiddlewaretoken.value,
     },
   }) // Converting to JSON
     .then((response) => response.json())
 
     // Displaying results to console
-    .then((data) => console.log(data));
+    .then((item) => {
+      console.log(item);
+      let element = `<p> ${item.name} </>`;
+      list.insertAdjacentHTML("beforeend", element);
+      formPostData.reset();
+    });
 });
